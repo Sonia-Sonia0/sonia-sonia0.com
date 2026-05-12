@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonia Sandhu — UX & Product Designer</title>
+<meta name="description" content="UX & Product Designer with 5+ years designing for complex, high-stakes environments. SCADA systems, enterprise platforms, fintech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #151515;
+    --ink-soft: #555;
+    --ink-faint: #999;
+    --paper: #FAFAF8;
+    --accent: #1A6B8A;
+    --accent-light: #E6F2F7;
+    --rule: #E4E4DF;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max: 740px;
+    --nav-h: 64px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 3rem);
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  main { padding-top: var(--nav-h); }
+  .section { padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 3rem); }
+  .inner { max-width: var(--max); margin: 0 auto; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex; align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.75rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+    opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.75rem; border-radius: 0.25rem;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; transition: opacity 0.2s;
+    font-family: var(--sans);
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    border: 1px solid var(--rule); color: var(--ink-soft);
+    padding: 0.75rem 1.75rem; border-radius: 0.25rem;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+  .btn-ghost:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px; background: var(--rule);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; border-bottom: 1px solid var(--rule); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-aside {}
+  .about-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .about-role {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  .about-stats { display: flex; flex-direction: column; gap: 0.75rem; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-val { font-family: var(--serif); font-size: 1.8rem; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.04em; margin-top: 0.15rem; }
+  .about-body p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body p strong { color: var(--ink); font-weight: 500; }
+
+  /* ── WORK ── */
+  #work { border-bottom: 1px solid var(--rule); }
+  .case-list { display: flex; flex-direction: column; gap: 0; }
+  .case-item {
+    border-top: 1px solid var(--rule);
+    padding: 2.5rem 0;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .case-item:last-child { border-bottom: 1px solid var(--rule); }
+  .case-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 0;
+  }
+  .case-number {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+  .case-item:hover .case-title { color: var(--accent); }
+  .case-meta {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin-bottom: 0;
+  }
+  .case-tags {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 0;
+  }
+  .case-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 0.2rem;
+  }
+  .case-toggle {
+    width: 36px; height: 36px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.2s, border-color 0.2s;
+    margin-top: 0.25rem;
+  }
+  .case-item:hover .case-toggle {
+    background: var(--accent-light);
+    border-color: var(--accent);
+  }
+  .case-toggle svg { transition: transform 0.3s; }
+  .case-item.open .case-toggle svg { transform: rotate(45deg); }
+  .case-body {
+    display: none;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 1.5rem;
+  }
+  .case-item.open .case-body { display: block; }
+
+  .cs-section { margin-bottom: 2rem; }
+  .cs-section:last-child { margin-bottom: 0; }
+  .cs-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .cs-text {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .cs-text:last-child { margin-bottom: 0; }
+  blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 0.75rem 1.25rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    background: var(--accent-light);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+  blockquote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+  }
+  .decision-block {
+    border: 1px solid var(--rule);
+    border-radius: 0.375rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .decision-block:last-child { margin-bottom: 0; }
+  .decision-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .decision-text {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+  .outcomes-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .outcome-card {
+    background: var(--accent-light);
+    border-radius: 0.375rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  .outcome-val {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .outcome-label {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ── PROCESS ── */
+  #process { background: #fff; border-bottom: 1px solid var(--rule); }
+  .process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .process-item { padding: 1.5rem; border: 1px solid var(--rule); border-radius: 0.375rem; }
+  .process-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .process-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .process-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.65; }
+
+  /* ── CONTACT ── */
+  #contact { border-bottom: 1px solid var(--rule); }
+  .contact-block {
+    max-width: 540px;
+  }
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .contact-heading em { font-style: italic; color: var(--accent); }
+  .contact-sub {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem clamp(1.5rem, 5vw, 3rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-stats { flex-direction: row; gap: 1.5rem; }
+    .process-grid { grid-template-columns: 1fr; }
+    .outcomes-row { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    h1 { font-size: 2.5rem; }
+    .case-title { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Sonia Sandhu</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero" class="section">
+    <div class="hero-inner">
+      <span class="hero-tag">UX &amp; Product Designer · Sydney</span>
+      <h1>Design for<br>the person,<br>not the <em>screen.</em></h1>
+      <p class="hero-sub">5+ years designing complex, high-stakes digital systems — from SCADA control rooms to government rail platforms to cross-platform fintech products.</p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn-primary">View case studies</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="inner">
+      <div class="section-label reveal">About</div>
+      <div class="about-grid">
+        <div class="about-aside reveal">
+          <div class="about-name">Sonia Sandhu</div>
+          <div class="about-role">UX &amp; Product Designer</div>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-val">5+</span>
+              <span class="stat-label">Years experience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">3</span>
+              <span class="stat-label">Industries</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">6</span>
+              <span class="stat-label">Platforms</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-body reveal">
+          <p>I'm a product and UX designer with 5+ years of experience designing for <strong>complex, high-stakes environments</strong> — SCADA control systems, enterprise operations platforms, and mobile fintech products. My work sits at the intersection of difficult problems and the people who have to live with them every day.</p>
+          <p>I design around <strong>outcomes, not deliverables.</strong> That means starting with the person using the system — understanding their context, their pressures, their workarounds — before touching a frame. The best interfaces I've made are the ones users stop noticing because they just work.</p>
+          <p>I'm returning to full-time product design and looking for a role where the design problems are genuinely hard and the user impact is real. If that sounds like your team, I'd like to talk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section">
+    <div class="inner">
+      <div class="section-label reveal">Selected work</div>
+      <div class="case-list">
+
+        <!-- CS 1 -->
+        <div class="case-item" onclick="toggleCase(this)">
+          <div class="case-header">
+            <div>
+              <div class="case-number">Case study 01</div>
+              <div class="case-title">Integra SCADA HMI Redesign</div>
+              <div class="case-meta">UGL · Product Designer · Desktop + Mobile · 2022–2025</div>
+              <div class="case-tags" style="margin-top:0.75rem">
+                <span class="case-tag">Safety-critical</span>
+                <span class="case-tag">Infrastructure</span>
+                <span class="case-tag">Desktop + Mobile</span>
+              </div>
+            </div>
+            <div class="case-toggle">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1v12M1 7h12" stroke="#1A6B8A" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="cs-section">
+              <div class="cs-label">Opening</div>
+              <p class="cs-text">When an infrastructure operator misses a critical alarm, the consequences aren't a bad user experience — they're a service failure, a safety risk, or worse. The Integra SCADA platform is the system those operators rely on, 24 hours a day, to monitor and control live infrastructure assets. By the time we completed the redesign, system testing showed a <strong>25% improvement in emergency response time</strong> — the result of designing every screen around one question: what does an operator need to stay in control under pressure?</p>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">The problem</div>
+              <p class="cs-text">Operators worked in 24/7 control rooms with a legacy interface that created visual inconsistency, unreliable alarm hierarchy, and eye strain across long shifts. During contextual research, we observed operators scanning through dozens of simultaneous alarms during incidents — unable to quickly identify which required immediate action.</p>
+              <blockquote>"When something goes wrong, everything goes red. I can't tell what's actually on fire."<cite>— Operator, contextual inquiry</cite></blockquote>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Design decisions</div>
+              <div class="decision-block">
+                <div class="decision-title">01 · Dark theme UI — sustained attention, not preference</div>
+                <p class="decision-text">Operators work in low-ambient control rooms across 8–12 hour shifts. The legacy bright interface caused physical eye strain. A dark theme was an environmental decision, not aesthetic — validated against WCAG 2.1 AA under actual control room lighting. We ruled out a configurable toggle: in safety-critical environments, consistency across all operators matters more than personal preference.</p>
+              </div>
+              <div class="decision-block">
+                <div class="decision-title">02 · Structured alarm prioritisation — reducing noise to protect signal</div>
+                <p class="decision-text">We restructured the alarm panel around a three-tier model — Critical, Elevated, Informational — using visual weight rather than colour alone. Critical alarms occupy a persistent top zone that cannot be scrolled past. Priority-first won over grouped-by-asset because it matched how operators think in an emergency: severity first, then location.</p>
+              </div>
+              <div class="decision-block">
+                <div class="decision-title">03 · Modular components — consistency as a safety feature</div>
+                <p class="decision-text">The legacy interface had been built by different teams in isolation — the same data looked different across screens. We built a shared Figma component library with strict behavioural rules. Any component responds identically across every screen. Consistency here isn't a design preference — it's a safety consideration.</p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Outcomes</div>
+              <div class="outcomes-row">
+                <div class="outcome-card"><div class="outcome-val">25%</div><div class="outcome-label">Faster emergency response in system testing</div></div>
+                <div class="outcome-card"><div class="outcome-val">WCAG AA</div><div class="outcome-label">Accessibility compliance validated in situ</div></div>
+                <div class="outcome-card"><div class="outcome-val">1 library</div><div class="outcome-label">Unified component system for all future modules</div></div>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Reflection</div>
+              <p class="cs-text">The most important thing I'd do differently: involve operators earlier. Access came later in the process than I would have chosen. I'd have fought harder for that access from day one. What this project taught me is that good design in complex environments is as much about what you remove as what you add.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CS 2 -->
+        <div class="case-item" onclick="toggleCase(this)">
+          <div class="case-header">
+            <div>
+              <div class="case-number">Case study 02</div>
+              <div class="case-title">Performance Management System</div>
+              <div class="case-meta">Transport for NSW · Sole Lead UX Designer at UGL · Web + Mobile · 2023–2025</div>
+              <div class="case-tags" style="margin-top:0.75rem">
+                <span class="case-tag">Government</span>
+                <span class="case-tag">0→1 Product</span>
+                <span class="case-tag">Cross-platform</span>
+                <span class="case-tag">Enterprise</span>
+              </div>
+            </div>
+            <div class="case-toggle">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1v12M1 7h12" stroke="#1A6B8A" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="cs-section">
+              <div class="cs-label">Opening</div>
+              <p class="cs-text">Managing Sydney's train fleet means making high-stakes decisions in real time — which units are available, which are in maintenance, which are delayed, and what that means for service contracts worth millions. The platform we delivered reduced reporting time by <strong>50%</strong>, eliminated manual reconciliation across three teams, and gave operations controllers a live view of fleet availability for the first time. I was the sole lead designer at UGL delivering for Transport for NSW, responsible for 13+ screen types across web and mobile.</p>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">The problem</div>
+              <p class="cs-text">Before this platform, three separate teams — operations, maintenance, and finance — managed train performance data across disconnected spreadsheets and email threads. Operations controllers worked from information hours out of date. Maintenance planners lost job logs in handovers. Finance teams reconciled mismatched data after the fact.</p>
+              <blockquote>"We're making decisions about the fleet based on yesterday's data. By the time the spreadsheet gets updated, the situation has already changed."<cite>— Operations controller, synthesised from stakeholder sessions</cite></blockquote>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Design decisions</div>
+              <div class="decision-block">
+                <div class="decision-title">01 · Cross-platform — one system, two contexts</div>
+                <p class="decision-text">We didn't design desktop first and adapt for mobile. Maintenance staff in noisy depots needed to log a fault fast, one hand free — a categorically different context from an operations manager analysing fleet trends across multiple screens. Mobile was designed around the smallest unit of work; desktop around density and familiarity. Two platforms, one shared design system, deliberately distinct interaction models.</p>
+              </div>
+              <div class="decision-block">
+                <div class="decision-title">02 · Information hierarchy across 13+ screens</div>
+                <p class="decision-text">One principle applied consistently: status before detail, exceptions before routine, actions before information. Operations controllers see live status. Managers see aggregated performance. Finance sees contract-relevant data filtered for payment reconciliation. Same data, different lens — validated through stakeholder reviews with each team.</p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Outcomes</div>
+              <div class="outcomes-row">
+                <div class="outcome-card"><div class="outcome-val">50%</div><div class="outcome-label">Reduction in reporting time</div></div>
+                <div class="outcome-card"><div class="outcome-val">3</div><div class="outcome-label">User groups unified in one system</div></div>
+                <div class="outcome-card"><div class="outcome-val">13+</div><div class="outcome-label">Screen types across web &amp; mobile</div></div>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Reflection</div>
+              <p class="cs-text">The hardest part wasn't the complexity of the design problems — it was making consequential decisions in isolation as the sole designer. I got better at writing down the why before the what. It's a discipline I now carry into every project regardless of team size. With one more voice pressure-testing the work, it could have been even better.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CS 3 -->
+        <div class="case-item" onclick="toggleCase(this)">
+          <div class="case-header">
+            <div>
+              <div class="case-number">Case study 03</div>
+              <div class="case-title">Insurance Management App</div>
+              <div class="case-meta">Confidential Client · UX Designer · Web + iOS + Android</div>
+              <div class="case-tags" style="margin-top:0.75rem">
+                <span class="case-tag">Fintech</span>
+                <span class="case-tag">Onboarding</span>
+                <span class="case-tag">iOS + Android + Web</span>
+              </div>
+            </div>
+            <div class="case-toggle">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M7 1v12M1 7h12" stroke="#1A6B8A" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="cs-section">
+              <div class="cs-label">Opening</div>
+              <p class="cs-text">Insurance is one of the most important financial decisions people make — and one of the least understood. The client had built a fully managed insurance advisory service and needed a digital product that made that relationship feel as trustworthy and simple as it actually was. My contribution focused on the onboarding and document signing flows: the make-or-break moment where a new user decides whether to trust us with their financial life.</p>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">The problem</div>
+              <p class="cs-text">The core tension: the information users need to give to get value is exactly the information they're most reluctant to hand over. New users had to verify identity, sign legal documents, and input existing contracts — all before experiencing a single benefit. Three user types, each arriving with different levels of existing trust.</p>
+              <blockquote>"I don't understand what I'm signing. I just click through and hope for the best."<cite>— Insurance app user, representative of target audience sentiment</cite></blockquote>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Design decisions</div>
+              <div class="decision-block">
+                <div class="decision-title">01 · Two-phase registration — reducing perceived burden</div>
+                <p class="decision-text">We split registration into two named phases with a natural pause point. Phase 1 framed around access. Phase 2 framed around value — personalised service, not more admin. For existing customers, data was pre-filled wherever possible. Users who completed Phase 1 had already invested; Phase 2 completion followed naturally.</p>
+              </div>
+              <div class="decision-block">
+                <div class="decision-title">02 · Document signing — transparent, not bureaucratic</div>
+                <p class="decision-text">Each document opened with a plain-language explanation — the first thing seen, not a footer footnote. Two signature patterns: drawn signatures for formal legal documents (deliberate, considered commitment); toggle switches for lower-stakes confirmations. The goal: a user who signs because they understand, not because they gave up trying to.</p>
+              </div>
+              <div class="decision-block">
+                <div class="decision-title">03 · Cross-platform consistency without losing platform conventions</div>
+                <p class="decision-text">Shared design system and interaction model across web, iOS, and Android — then adapted to each platform's native conventions. Web included a manual dark/light toggle; mobile followed system settings. Users' muscle memory for their platform was respected within a consistent visual and behavioural frame.</p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Outcomes</div>
+              <div class="outcomes-row">
+                <div class="outcome-card"><div class="outcome-val">3</div><div class="outcome-label">Platforms delivered (Web, iOS, Android)</div></div>
+                <div class="outcome-card"><div class="outcome-val">2-phase</div><div class="outcome-label">Onboarding reducing drop-off</div></div>
+                <div class="outcome-card"><div class="outcome-val">10+</div><div class="outcome-label">Service types supported at scale</div></div>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-label">Reflection</div>
+              <p class="cs-text">Working in a team, the onboarding flows I owned sat upstream of everything else. Every decision had downstream implications for screens another designer was building. Clear documentation of rationale wasn't a courtesy — it was a dependency. I'd do more user testing on the signing flow before build. Solving the trust problem matters more than solving the interaction problem.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="inner">
+      <div class="section-label reveal">How I work</div>
+      <div class="process-grid">
+        <div class="process-item reveal">
+          <div class="process-num">01</div>
+          <div class="process-name">Start with people</div>
+          <p class="process-desc">Before any wireframe, I need to understand who's using the system, under what conditions, and what's genuinely hard for them. Research informs every decision.</p>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-num">02</div>
+          <div class="process-name">Design with reasoning</div>
+          <p class="process-desc">Every design decision has a why. I document the alternatives considered and the reason for the choice — not just for stakeholders, but to keep my own thinking honest.</p>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-num">03</div>
+          <div class="process-name">Test and iterate</div>
+          <p class="process-desc">Assumptions get challenged early. Whether usability testing or stakeholder review, I'd rather find the friction in a prototype than in a live system.</p>
+        </div>
+        <div class="process-item reveal">
+          <div class="process-num">04</div>
+          <div class="process-name">Measure what changed</div>
+          <p class="process-desc">Design is only as good as the outcome it produces. I connect decisions to results — for users and for the business — not just to deliverables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="inner">
+      <div class="section-label reveal">Get in touch</div>
+      <div class="contact-block reveal">
+        <h2 class="contact-heading">Let's work<br>on something <em>hard.</em></h2>
+        <p class="contact-sub">I'm currently open to full-time product design roles. If your team is tackling genuinely complex problems, I'd like to hear about it.</p>
+        <div class="contact-links">
+          <a href="mailto:s.sangwan0002@gmail.com" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 4l6 5 6-5M2 4h12v8H2V4z" stroke="#1A6B8A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            s.sangwan0002@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/sooniasandhu" target="_blank" class="contact-link">
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="2" width="12" height="12" rx="2" stroke="#1A6B8A" stroke-width="1.2"/>
+                <path d="M5 7v4M5 5v.5M8 11V8.5C8 7.7 8.7 7 9.5 7S11 7.7 11 8.5V11" stroke="#1A6B8A" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            linkedin.com/in/sooniasandhu
+          </a>
+          <a href="/Sonia_Portfolio.docx" class="contact-link" download>
+            <div class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4 2h6l4 4v8H4V2z" stroke="#1A6B8A" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M10 2v4h4M8 7v5M6 10l2 2 2-2" stroke="#1A6B8A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Download full portfolio (PDF)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2025 Sonia Sandhu</span>
+  <span>soniasandhudesigns.com</span>
+</footer>
+
+<script>
+  // Toggle case studies
+  function toggleCase(el) {
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.case-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) el.classList.add('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
